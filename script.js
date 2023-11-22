@@ -5,7 +5,7 @@ let mousePressed = false;
 let imageUrl =
   "https://images.pexels.com/photos/4339681/pexels-photo-4339681.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
 
-canvas = initializeCanvas();
+var canvas = initializeCanvas();
 
 function initializeCanvas() {
   let myCanvas = document.createElement("canvas");
@@ -73,6 +73,14 @@ function sizeHandler(e) {
   canvas.freeDrawingBrush.width = size;
 }
 
+function clearCanvas() {
+  if (canvas.getObjects().length > 0) {
+    canvas.getObjects().map((item) => canvas.remove(item));
+  } else {
+    console.warn("There is nothing to clear");
+  }
+}
+
 canvas.on("mouse:move", ({ e }) => {
   canvasPan(e);
 });
@@ -97,6 +105,16 @@ function imageHandler(e) {
   console.log(imageUrl);
   setBackground(canvas);
 }
-
+function rectangleHandler() {
+  // const canvasCenter = canvas.getCenter();
+  const rect = new fabric.Rect({
+    width: 100,
+    height: 100,
+    fill: "blue",
+    left: (800 - 100) / 2,
+    top: (500 - 100) / 2,
+  });
+  canvas.add(rect);
+}
 setBackground(canvas);
 canvasPan();
