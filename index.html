@@ -12,11 +12,14 @@
       <button id="pan" onclick="togglePanHandler()">Pan</button>
       <button id="draw" onclick="toggleDrawHandler()">Draw</button>
       <button onclick="clearCanvas()">Clear</button>
+      <button onclick="restoreCanvas()">restore</button>
       <input type="color" onchange="colorHandler(event)" />
       <input type="range" min="1" max="35" onchange="sizeHandler(event)" />
       <span id="brushSize"></span><br />
       <button onclick="rectangleHandler()">Rectangle</button>
       <button onclick="circleHandler()">Circle</button>
+      <button onclick="groupHandler(true)">Group</button>
+      <button onclick="groupHandler(false)">un-group</button>
     </div>
     <script src="script.js"></script>
   </body>
